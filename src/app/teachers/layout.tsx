@@ -1,5 +1,6 @@
 import Menu from "@/components/Menu";
 import Navbar from "@/components/Navbar";
+import TeacherMenu from "@/components/TeacherMenu";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,7 +20,7 @@ export default function DashboardLayout({
           <Image src="/GeoAttend.png" alt="logo" width={176} height={40} />
           {/* <span className="hidden lg:block font-bold">SchooLama</span> */}
         </Link>
-        <Menu />
+        <TeacherMenu />
       </div>
       {/* RIGHT */}
       <div className="w-[86%] md:w-[92%] lg:w-[84%] xl:w-[86%] bg-[#F7F8FA] overflow-scroll flex flex-col">

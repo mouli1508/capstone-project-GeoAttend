@@ -1,10 +1,11 @@
-'use client';  // Add this line at the very top to make this a Client Component
+'use client';
 
 import React, { useState } from 'react';
 import EventCalendar from "@/components/EventCalendar";
 import UserCard from "@/components/UserCard";
 import FancyButton from "@/components/FancyButton";  // Import the button component
-import JoinClassModal from "@/components/JoinClassModal";  // Import the modal component
+import JoinClassModal from "@/components/JoinClassModal";
+import Link from 'next/link';
 
 const StudentsPage = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -19,6 +20,13 @@ const StudentsPage = () => {
     setModalOpen(false);
   };
 
+  // Define course data
+  const courses = [
+    { id: 'CS101', name: 'Capstone Project' },
+    { id: 'DM202', name: 'Human Robot Interaction' },
+    { id: 'PM303', name: 'Advance Artificial Intelligence' }
+  ];
+
   return (
     <div className="p-4 flex gap-4 flex-col md:flex-row">
       {/* LEFT */}
@@ -31,9 +39,13 @@ const StudentsPage = () => {
 
         {/* USER CARDS */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-          <UserCard type="Capstone Project" courseNumber="CS101" />
-          <UserCard type="Human Robot Interaction" courseNumber="DM202" />
-          <UserCard type="Advance Artificial Intelligence" courseNumber="PM303" />
+          {courses.map((course) => (
+            <Link key={course.id} href="/students/list/attendance">
+              <div className="cursor-pointer">
+                <UserCard type={course.name} courseNumber={course.id} />
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
 

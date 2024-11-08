@@ -9,6 +9,7 @@ import FinanceChart from "@/components/FinanceChart";
 import UserCard from "@/components/UserCard";
 import FancyButton from "@/components/FancyButton";  // Import the new button component
 import CreateClassModal from "@/components/CreateClassModal";  // Import the CreateClassModal
+import Link from 'next/link';
 
 const TeachersPage = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -35,9 +36,9 @@ const TeachersPage = () => {
 
         {/* USER CARDS */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-          <UserCard type="Capstone Project" courseNumber="CS101" />
-          <UserCard type="Data Mining Techniques" courseNumber="DM202" />
-          <UserCard type="Probabilistic Data Management" courseNumber="PM303" />
+          <Link href="teachers/list/attendance"><UserCard type="Capstone Project" courseNumber="CS101" /></Link>
+          <Link href="teachers/list/attendance"><UserCard type="Data Mining Techniques" courseNumber="DM202" /></Link>
+          <Link href="teachers/list/attendance"><UserCard type="Probabilistic Data Management" courseNumber="PM303" /></Link>
         </div>
 
         {/* MIDDLE CHARTS */}

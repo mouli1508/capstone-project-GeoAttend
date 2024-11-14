@@ -16,7 +16,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ icon: Icon, label, value, col
         <span className={`text-sm bg-white px-3 py-1 rounded-full ${color}`}>
           {label}
         </span>
-        <Icon className="text-gray-600" size={24} />
+        <Icon />
       </div>
       <h1 className="text-3xl font-semibold my-4 text-gray-700">{value}</h1>
     </div>

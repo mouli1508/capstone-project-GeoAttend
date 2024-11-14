@@ -1,13 +1,8 @@
-'use client'
+'use client';
 
 import React, { useState } from 'react';
-import Announcements from "@/components/Announcements";
-import AttendanceChart from "@/components/AttendanceChart";
-import CountChart from "@/components/CountChart";
-import EventCalendar from "@/components/EventCalendar";
-import FinanceChart from "@/components/FinanceChart";
 import UserCard from "@/components/UserCard";
-import FancyButton from "@/components/FancyButton";  // Import the new button component
+import FancyButton from "@/components/FancyButton";  // Import the button component
 import CreateClassModal from "@/components/CreateClassModal";  // Import the CreateClassModal
 import Link from 'next/link';
 
@@ -25,43 +20,47 @@ const TeachersPage = () => {
   };
 
   return (
-    <div className="p-4 flex gap-4 flex-col md:flex-row">
-      {/* LEFT */}
-      <div className="w-full lg:w-2/3 flex flex-col gap-8">
-        {/* CREATE NEW CLASS BUTTON */}
-        <div className="flex justify-between items-center">
-          <h2 className="text-xl font-semibold">Classes</h2>
-          <FancyButton label="+ Create New Class" onClick={openModal} />
-        </div>
+    <div className="p-4">
+      {/* Header with Create New Class Button */}
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-semibold">Classes</h2>
+        <FancyButton label="+ Create New Class" onClick={openModal} />
+      </div>
 
-        {/* USER CARDS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-          <Link href="teachers/list/attendance"><UserCard type="Capstone Project" courseNumber="CS101" /></Link>
-          <Link href="teachers/list/attendance"><UserCard type="Data Mining Techniques" courseNumber="DM202" /></Link>
-          <Link href="teachers/list/attendance"><UserCard type="Probabilistic Data Management" courseNumber="PM303" /></Link>
-        </div>
-
-        {/* MIDDLE CHARTS */}
-        <div className="flex gap-4 flex-col lg:flex-row">
-          {/* COUNT CHART */}
-          <div className="w-full lg:w-1/3 h-[450px]">
-            {/* <CountChart /> */}
+      {/* USER CARDS: Full-width grid layout */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Link href="/teachers/list/attendance">
+          <div className="cursor-pointer">
+            <UserCard type="Capstone Project" courseNumber="CS101" />
           </div>
-          {/* ATTENDANCE CHART */}
-          <div className="w-full lg:w-2/3 h-[450px]">
-            {/* <AttendanceChart /> */}
+        </Link>
+        <Link href="/teachers/list/attendance">
+          <div className="cursor-pointer">
+            <UserCard type="Data Mining Techniques" courseNumber="DM202" />
           </div>
-        </div>
+        </Link>
+        <Link href="/teachers/list/attendance">
+          <div className="cursor-pointer">
+            <UserCard type="Probabilistic Data Management" courseNumber="PM303" />
+          </div>
+        </Link>
+      </div>
 
-        {/* BOTTOM CHART */}
-        <div className="w-full h-[500px]">
-          {/* <FinanceChart /> */}
+      {/* MIDDLE CHARTS: Full-width responsive layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+        {/* COUNT CHART */}
+        <div className="h-[450px]">
+          {/* <CountChart /> */}
+        </div>
+        {/* ATTENDANCE CHART */}
+        <div className="h-[450px] lg:col-span-2">
+          {/* <AttendanceChart /> */}
         </div>
       </div>
 
-      {/* RIGHT */}
-      <div className="w-full lg:w-1/3 flex flex-col gap-8">
-        <EventCalendar />
+      {/* BOTTOM CHART: Full-width */}
+      <div className="w-full h-[500px] mt-8">
+        {/* <FinanceChart /> */}
       </div>
 
       {/* Create Class Modal */}
